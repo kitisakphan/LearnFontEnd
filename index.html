@@ -1,0 +1,30 @@
+<div id="result"></div>
+<script>
+    //ไปเอ่าข้อมูลมาทดสอบที่ https://jsonplaceholder.typicode.com/
+
+    fetch('https://jsonplaceholder.typicode.com/todos')
+      .then(response => response.json())
+      .then(json => 
+      {
+        let res = document.getElementById("result");
+        //console.log(json);//original
+        
+        //วิธีปกติ แบบนี้มือใหม่ อาจเข้าใจยาก
+        /*
+        json.forEach((_element) => {
+            let newElement=document.createElement("p");
+            newElement.innerHTML=_element.title;
+            res.appendChild(newElement);
+        });
+        */
+        //วิธีนี้ อาจจะเข้าใจง่ายมากกว่า
+        for(let i=0;i<json.length;i++){
+            let newElement=document.createElement("p");
+            newElement.innerHTML=json[i].title;
+            res.appendChild(newElement);
+
+        }
+
+      });
+ 
+</script>
